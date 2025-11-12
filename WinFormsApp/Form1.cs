@@ -6,6 +6,7 @@ using BookManagementSystem.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace WinFormsApp
@@ -20,10 +21,15 @@ namespace WinFormsApp
         private bool _suppressAuthorSuggestionUpdates;
         private bool _suppressTitleSuggestionUpdates;
         private bool _suppressSelectionChange;
+        private bool _suppressGenreFilterUpdates;
+        private ComboBox? _genreFilterComboBox;
+
+        private const string AllGenresOption = "Все жанры";
 
         public Form1()
         {
             InitializeComponent();
+            _genreFilterComboBox = comboBoxGenreFilter;
             ConfigureGrid();
             UpdateGenresDisplay();
 
@@ -101,6 +107,7 @@ namespace WinFormsApp
                 .ToList();
 
             DisplayBooks(_allBooks);
+            RefreshGenreFilterOptions();
         }
 
         private void DisplayBooks(IReadOnlyCollection<Book> books)
@@ -240,6 +247,16 @@ namespace WinFormsApp
             }
         }
 
+        private void comboBoxGenreFilter_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            if (_suppressGenreFilterUpdates)
+            {
+                return;
+            }
+
+            ApplyCombinedFilters();
+        }
+
         private void dataGridViewBooks_SelectionChanged(object sender, EventArgs e)
         {
             if (_suppressSelectionChange)
@@ -350,11 +367,36 @@ namespace WinFormsApp
                 b.Title.Contains(needle, StringComparison.CurrentCultureIgnoreCase));
         }
 
+        private IEnumerable<Book> FilterBooksByGenre(IEnumerable<Book> source)
+        {
+            var selectedGenre = GetSelectedGenreFilter();
+            if (string.IsNullOrWhiteSpace(selectedGenre))
+            {
+                return source;
+            }
+
+            return source.Where(b =>
+                b.Genres.Any(g => string.Equals(g.Name, selectedGenre, StringComparison.CurrentCultureIgnoreCase)));
+        }
+
         private void ApplyCombinedFilters()
         {
             var books = FilterBooksByAuthor(textBoxSearchAuthor.Text);
             books = FilterBooksByTitle(textBoxSearchTitle.Text, books);
+            books = FilterBooksByGenre(books);
             DisplayBooks(books.ToList());
+        }
+
+        private string? GetSelectedGenreFilter()
+        {
+            if (_genreFilterComboBox is null ||
+                _genreFilterComboBox.SelectedItem is not string selected ||
+                selected == AllGenresOption)
+            {
+                return null;
+            }
+
+            return selected;
         }
 
         private void ClearFields()
@@ -367,6 +409,12 @@ namespace WinFormsApp
             UpdateGenresDisplay();
             textBoxSearchAuthor.Clear();
             textBoxSearchTitle.Clear();
+            if (_genreFilterComboBox is not null && _genreFilterComboBox.Items.Count > 0)
+            {
+                _suppressGenreFilterUpdates = true;
+                _genreFilterComboBox.SelectedIndex = 0;
+                _suppressGenreFilterUpdates = false;
+            }
             HideAuthorSuggestions();
             HideTitleSuggestions();
             dataGridViewBooks.ClearSelection();
@@ -377,6 +425,36 @@ namespace WinFormsApp
             labelGenresValue.Text = _currentGenres.Any()
                 ? string.Join(", ", _currentGenres)
                 : "Жанры не выбраны";
+        }
+
+        private void RefreshGenreFilterOptions()
+        {
+            if (_genreFilterComboBox is null)
+            {
+                return;
+            }
+
+            var selected = GetSelectedGenreFilter();
+            var genres = _service.GetAllGenres();
+
+            _suppressGenreFilterUpdates = true;
+            _genreFilterComboBox.Items.Clear();
+            _genreFilterComboBox.Items.Add(AllGenresOption);
+            foreach (var genre in genres)
+            {
+                _genreFilterComboBox.Items.Add(genre);
+            }
+
+            if (!string.IsNullOrWhiteSpace(selected) && _genreFilterComboBox.Items.Contains(selected))
+            {
+                _genreFilterComboBox.SelectedItem = selected;
+            }
+            else
+            {
+                _genreFilterComboBox.SelectedIndex = 0;
+            }
+
+            _suppressGenreFilterUpdates = false;
         }
 
         private int? ReadSelectedBookId()
