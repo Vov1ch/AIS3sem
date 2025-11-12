@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using BookManagementSystem.Domain.Entities;
@@ -22,9 +23,9 @@ public class BookService
             .ToList();
     }
 
-    public Book CreateBook(string title, string author, int year, string genre)
+    public Book CreateBook(string title, string author, int year, IEnumerable<string> genres)
     {
-        var book = new Book(title, author, year, genre);
+        var book = new Book(title, author, year, genres);
         return _repository.Add(book);
     }
 
@@ -38,31 +39,72 @@ public class BookService
         return _repository.GetById(id);
     }
 
-    public bool UpdateBook(int id, string title, string author, int year, string genre)
+    public bool UpdateBook(int id, string title, string author, int year, IEnumerable<string> genres)
     {
-        var book = new Book(title, author, year, genre) { ID = id };
+        var book = new Book(title, author, year, genres) { ID = id };
         return _repository.Update(book);
     }
 
     public IReadOnlyCollection<Book> FindBooksByAuthor(string author)
     {
+        if (string.IsNullOrWhiteSpace(author))
+        {
+            return GetAllBooks();
+        }
+
         return _repository
             .FindByAuthor(author)
             .ToList();
     }
 
+    public IReadOnlyCollection<string> GetAuthorSuggestions(string authorFragment)
+    {
+        var comparer = StringComparer.CurrentCultureIgnoreCase;
+        IEnumerable<string> authors = string.IsNullOrWhiteSpace(authorFragment)
+            ? _repository.GetAll().Select(b => b.Author)
+            : _repository.FindByAuthor(authorFragment).Select(b => b.Author);
+
+        return authors
+            .Where(name => !string.IsNullOrWhiteSpace(name))
+            .Distinct(comparer)
+            .OrderBy(name => name, comparer)
+            .ToList();
+    }
+
     public IReadOnlyCollection<Book> FindBooksByTitle(string title)
     {
+        if (string.IsNullOrWhiteSpace(title))
+        {
+            return GetAllBooks();
+        }
+
         return _repository
             .FindByTitle(title)
             .ToList();
     }
 
-    public IReadOnlyDictionary<string, IReadOnlyCollection<Book>> GroupBooksByGenre()
+    public IReadOnlyCollection<string> GetAllGenres()
     {
         return _repository
-            .GetAll()
-            .GroupBy(b => string.IsNullOrWhiteSpace(b.Genre) ? "Не указан" : b.Genre)
-            .ToDictionary(g => g.Key, g => (IReadOnlyCollection<Book>)g.ToList());
+            .GetAllGenres()
+            .OrderBy(g => g, StringComparer.CurrentCultureIgnoreCase)
+            .ToList();
+    }
+
+    public IReadOnlyDictionary<string, IReadOnlyCollection<Book>> GroupBooksByGenre()
+    {
+        var books = _repository.GetAll();
+
+        var items = books.SelectMany(book =>
+            book.Genres.Any()
+                ? book.Genres.Select(g => (Genre: g.Name, Book: book))
+                : new[] { (Genre: "Без жанра", Book: book) });
+
+        return items
+            .GroupBy(item => string.IsNullOrWhiteSpace(item.Genre) ? "Без жанра" : item.Genre)
+            .ToDictionary(
+                g => g.Key,
+                g => (IReadOnlyCollection<Book>)g.Select(item => item.Book).Distinct().ToList());
     }
 }
+

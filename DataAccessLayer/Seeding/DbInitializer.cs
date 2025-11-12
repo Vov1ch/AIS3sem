@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using BookManagementSystem.DataAccessLayer.Contexts;
 using BookManagementSystem.Domain.Entities;
@@ -15,14 +16,33 @@ public static class DbInitializer
             return;
         }
 
+        var genreCache = new Dictionary<string, Genre>(StringComparer.CurrentCultureIgnoreCase);
+
         var seedBooks = new[]
         {
-            new Book("1984", "Джордж Оруэлл", 1949, "Антиутопия"),
-            new Book("Преступление и наказание", "Фёдор Достоевский", 1866, "Роман"),
-            new Book("Властелин колец", "Джон Толкин", 1954, "Фэнтези"),
-            new Book("Мастер и Маргарита", "Михаил Булгаков", 1966, "Роман"),
-            new Book("Три товарища", "Эрих Мария Ремарк", 1936, "Драма")
-        };
+            new { Title = "1984", Author = "Джордж Оруэлл", Year = 1949, Genres = new[] { "Антиутопия", "Дистопия" } },
+            new { Title = "Преступление и наказание", Author = "Фёдор Достоевский", Year = 1866, Genres = new[] { "Роман" } },
+            new { Title = "Властелин колец", Author = "Джон Толкин", Year = 1954, Genres = new[] { "Фэнтези", "Приключения" } },
+            new { Title = "Мастер и Маргарита", Author = "Михаил Булгаков", Year = 1966, Genres = new[] { "Мистика", "Роман" } },
+            new { Title = "Три товарища", Author = "Эрих Мария Ремарк", Year = 1936, Genres = new[] { "Драма" } }
+        }
+        .Select(b =>
+        {
+            var book = new Book(b.Title, b.Author, b.Year, Array.Empty<string>());
+            foreach (var name in b.Genres)
+            {
+                if (!genreCache.TryGetValue(name, out var genre))
+                {
+                    genre = new Genre { Name = name };
+                    genreCache[name] = genre;
+                }
+
+                book.Genres.Add(genre);
+            }
+
+            return book;
+        })
+        .ToList();
 
         context.Books.AddRange(seedBooks);
         context.SaveChanges();

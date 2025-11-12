@@ -28,3 +28,4 @@ C:\Users\Vladimir\Desktop\BookManagementSystem-master\BusinessLogicLayer\obj\Deb
 C:\Users\Vladimir\Desktop\BookManagementSystem-master\BusinessLogicLayer\obj\Debug\net8.0\refint\BusinessLogicLayer.dll
 C:\Users\Vladimir\Desktop\BookManagementSystem-master\BusinessLogicLayer\obj\Debug\net8.0\BusinessLogicLayer.pdb
 C:\Users\Vladimir\Desktop\BookManagementSystem-master\BusinessLogicLayer\obj\Debug\net8.0\ref\BusinessLogicLayer.dll
+C:\Users\Vladimir\Desktop\BookManagementSystem-master\BusinessLogicLayer\obj\Debug\net8.0\BusinessLogicLayer.sourcelink.json

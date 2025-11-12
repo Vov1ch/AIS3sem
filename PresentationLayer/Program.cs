@@ -4,6 +4,7 @@ using BookManagementSystem.DataAccessLayer.Contexts;
 using BookManagementSystem.DataAccessLayer.Repositories;
 using BookManagementSystem.Domain.Entities;
 using BookManagementSystem.Domain.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,15 +33,14 @@ internal static class Program
         }
         else
         {
-            IBookRepository repository = new DapperBookRepository(connectionString);
-            var service = new BookService(repository);
+            var service = new BookService(new DapperBookRepository(connectionString));
             RunMenu(service);
         }
     }
 
     private static DataProvider AskForProvider()
     {
-        Console.WriteLine("Выберите способ доступа к данным:");
+        Console.WriteLine("Выберите поставщика данных:");
         Console.WriteLine("1. Entity Framework Core");
         Console.WriteLine("2. Dapper");
 
@@ -57,7 +57,7 @@ internal static class Program
                 return DataProvider.Dapper;
             }
 
-            Console.Write("Некорректный ввод. Повторите попытку: ");
+            Console.Write("Неверный выбор. Повторите попытку: ");
         }
     }
 
@@ -94,7 +94,7 @@ internal static class Program
                 case "8":
                     return;
                 default:
-                    Console.WriteLine("Неизвестная команда.");
+                    Console.WriteLine("Команда не распознана.");
                     break;
             }
         }
@@ -102,14 +102,14 @@ internal static class Program
 
     private static void PrintMenu()
     {
-        Console.WriteLine("\n--- Меню управления книгами ---");
-        Console.WriteLine("1. Показать все книги");
+        Console.WriteLine("\n--- Управление библиотекой ---");
+        Console.WriteLine("1. Показать книги");
         Console.WriteLine("2. Добавить книгу");
         Console.WriteLine("3. Удалить книгу");
         Console.WriteLine("4. Обновить книгу");
-        Console.WriteLine("5. Найти книги по автору");
-        Console.WriteLine("6. Сгруппировать книги по жанрам");
-        Console.WriteLine("7. Найти книги по названию");
+        Console.WriteLine("5. Поиск по автору");
+        Console.WriteLine("6. Группировка по жанрам");
+        Console.WriteLine("7. Поиск по названию");
         Console.WriteLine("8. Выход");
         Console.Write("Выбор: ");
     }
@@ -133,10 +133,10 @@ internal static class Program
     {
         var title = ReadRequiredString("Название: ");
         var author = ReadRequiredString("Автор: ");
-        var year = ReadInt("Год выхода: ");
-        var genre = ReadRequiredString("Жанр: ");
+        var year = ReadInt("Год: ");
+        var genres = ReadGenresList("Жанры (через запятую): ");
 
-        var book = service.CreateBook(title, author, year, genre);
+        var book = service.CreateBook(title, author, year, genres);
         Console.WriteLine($"Книга добавлена с ID {book.ID}.");
     }
 
@@ -159,9 +159,9 @@ internal static class Program
         var title = ReadRequiredString("Новое название: ");
         var author = ReadRequiredString("Новый автор: ");
         var year = ReadInt("Новый год: ");
-        var genre = ReadRequiredString("Новый жанр: ");
+        var genres = ReadGenresList("Новые жанры (через запятую): ");
 
-        if (service.UpdateBook(id, title, author, year, genre))
+        if (service.UpdateBook(id, title, author, year, genres))
         {
             Console.WriteLine("Книга обновлена.");
         }
@@ -174,15 +174,13 @@ internal static class Program
     private static void FindByAuthor(BookService service)
     {
         var author = ReadRequiredString("Автор: ");
-        var books = service.FindBooksByAuthor(author);
-        ShowBooks(books);
+        ShowBooks(service.FindBooksByAuthor(author));
     }
 
     private static void FindByTitle(BookService service)
     {
         var title = ReadRequiredString("Часть названия: ");
-        var books = service.FindBooksByTitle(title);
-        ShowBooks(books);
+        ShowBooks(service.FindBooksByTitle(title));
     }
 
     private static void GroupByGenre(BookService service)
@@ -215,7 +213,7 @@ internal static class Program
                 return value.Trim();
             }
 
-            Console.Write("Поле обязательно. Повторите ввод: ");
+            Console.Write("Поле не может быть пустым. Повторите ввод: ");
         }
     }
 
@@ -230,7 +228,28 @@ internal static class Program
                 return number;
             }
 
-            Console.Write("Введите корректное число: ");
+            Console.Write("Некорректное число. Повторите ввод: ");
+        }
+    }
+
+    private static IReadOnlyCollection<string> ReadGenresList(string prompt)
+    {
+        while (true)
+        {
+            var raw = ReadRequiredString(prompt);
+            var genres = raw
+                .Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(g => g.Trim())
+                .Where(g => !string.IsNullOrWhiteSpace(g))
+                .Distinct(StringComparer.CurrentCultureIgnoreCase)
+                .ToList();
+
+            if (genres.Any())
+            {
+                return genres;
+            }
+
+            Console.WriteLine("Укажите хотя бы один жанр.");
         }
     }
 }

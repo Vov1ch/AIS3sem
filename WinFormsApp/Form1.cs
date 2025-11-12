@@ -6,7 +6,6 @@ using BookManagementSystem.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace WinFormsApp
@@ -16,27 +15,23 @@ namespace WinFormsApp
         private readonly BookDbContext _context;
         private readonly BookService _service;
 
+        private List<Book> _allBooks = new();
+        private List<string> _currentGenres = new();
+        private bool _suppressAuthorSuggestionUpdates;
+        private bool _suppressTitleSuggestionUpdates;
+        private bool _suppressSelectionChange;
+
         public Form1()
         {
             InitializeComponent();
+            ConfigureGrid();
+            UpdateGenresDisplay();
 
             var connectionString = SqliteConnectionProvider.GetDefaultConnectionString();
             _context = BookDbContextFactory.Create(connectionString);
             _service = new BookService(new EfBookRepository(_context));
 
             Activated += Form1_Activated;
-            comboBoxGenre.Items.AddRange(new[]
-            {
-                "Фантастика",
-                "Роман",
-                "Научпоп",
-                "Деловая литература",
-                "Пьеса",
-                "Исторический роман",
-                "Детектив",
-                "Поэзия"
-            });
-
             LoadBooks();
         }
 
@@ -46,20 +41,80 @@ namespace WinFormsApp
             _context.Dispose();
         }
 
+        private void Form1_Activated(object? sender, EventArgs e)
+        {
+            LoadBooks();
+        }
+
+        private void ConfigureGrid()
+        {
+            dataGridViewBooks.AutoGenerateColumns = false;
+            dataGridViewBooks.AllowUserToAddRows = false;
+            dataGridViewBooks.AllowUserToDeleteRows = false;
+            dataGridViewBooks.MultiSelect = false;
+            dataGridViewBooks.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            dataGridViewBooks.Columns.Clear();
+            dataGridViewBooks.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = nameof(Book.ID),
+                HeaderText = "ID",
+                FillWeight = 15,
+                ReadOnly = true
+            });
+            dataGridViewBooks.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = nameof(Book.Title),
+                HeaderText = "Название",
+                FillWeight = 35,
+                ReadOnly = true
+            });
+            dataGridViewBooks.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = nameof(Book.Author),
+                HeaderText = "Автор",
+                FillWeight = 30,
+                ReadOnly = true
+            });
+            dataGridViewBooks.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = nameof(Book.Year),
+                HeaderText = "Год",
+                FillWeight = 10,
+                ReadOnly = true
+            });
+            dataGridViewBooks.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = nameof(Book.GenresDisplay),
+                HeaderText = "Жанры",
+                FillWeight = 30,
+                ReadOnly = true
+            });
+        }
+
         private void LoadBooks()
         {
-            listBoxBooks.Items.Clear();
-            foreach (var book in _service.GetAllBooks())
-            {
-                listBoxBooks.Items.Add(book);
-            }
+            _allBooks = _service
+                .GetAllBooks()
+                .OrderBy(b => b.ID)
+                .ToList();
+
+            DisplayBooks(_allBooks);
+        }
+
+        private void DisplayBooks(IReadOnlyCollection<Book> books)
+        {
+            dataGridViewBooks.DataSource = null;
+            dataGridViewBooks.DataSource = books.ToList();
+            dataGridViewBooks.ClearSelection();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var title = textBoxTitle.Text;
-            var author = textBoxAuthor.Text;
-            var genre = comboBoxGenre.SelectedItem?.ToString();
+            var title = textBoxTitle.Text.Trim();
+            var author = textBoxAuthor.Text.Trim();
+            var genres = _currentGenres.ToList();
 
             if (!int.TryParse(textBoxYear.Text, out var year))
             {
@@ -69,13 +124,13 @@ namespace WinFormsApp
 
             if (string.IsNullOrWhiteSpace(title) ||
                 string.IsNullOrWhiteSpace(author) ||
-                string.IsNullOrWhiteSpace(genre))
+                !genres.Any())
             {
                 MessageBox.Show("Все поля обязательны.");
                 return;
             }
 
-            _service.CreateBook(title, author, year, genre);
+            _service.CreateBook(title, author, year, genres);
             LoadBooks();
             ClearFields();
             MessageBox.Show("Книга добавлена.");
@@ -102,40 +157,17 @@ namespace WinFormsApp
             }
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            var id = ReadSelectedBookId();
-            if (id is null)
-            {
-                MessageBox.Show("Выберите книгу для редактирования.");
-                return;
-            }
-
-            var book = _service.GetBookById(id.Value);
-            if (book is null)
-            {
-                MessageBox.Show("Книга не найдена.");
-                return;
-            }
-
-            textBoxId.Text = book.ID.ToString();
-            textBoxTitle.Text = book.Title;
-            textBoxAuthor.Text = book.Author;
-            textBoxYear.Text = book.Year.ToString();
-            comboBoxGenre.SelectedItem = book.Genre;
-        }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(textBoxId.Text, out var id))
             {
-                MessageBox.Show("Выберите книгу для сохранения.");
+                MessageBox.Show("Выберите запись для сохранения.");
                 return;
             }
 
-            var title = textBoxTitle.Text;
-            var author = textBoxAuthor.Text;
-            var genre = comboBoxGenre.SelectedItem?.ToString();
+            var title = textBoxTitle.Text.Trim();
+            var author = textBoxAuthor.Text.Trim();
+            var genres = _currentGenres.ToList();
 
             if (!int.TryParse(textBoxYear.Text, out var year))
             {
@@ -145,13 +177,13 @@ namespace WinFormsApp
 
             if (string.IsNullOrWhiteSpace(title) ||
                 string.IsNullOrWhiteSpace(author) ||
-                string.IsNullOrWhiteSpace(genre))
+                !genres.Any())
             {
                 MessageBox.Show("Все поля обязательны.");
                 return;
             }
 
-            if (_service.UpdateBook(id, title, author, year, genre))
+            if (_service.UpdateBook(id, title, author, year, genres))
             {
                 LoadBooks();
                 ClearFields();
@@ -165,62 +197,164 @@ namespace WinFormsApp
 
         private void btnGroup_Click(object sender, EventArgs e)
         {
-            var groups = _service.GroupBooksByGenre();
-            if (!groups.Any())
+            if (!_allBooks.Any())
             {
                 MessageBox.Show("Книги отсутствуют.");
                 return;
             }
 
-            var result = new StringBuilder();
-            foreach (var group in groups)
-            {
-                result.AppendLine($"Жанр: {group.Key}");
-                foreach (var book in group.Value)
-                {
-                    result.AppendLine($"  {book}");
-                }
+            var sorted = _allBooks
+                .OrderBy(b => GetPrimaryGenre(b), StringComparer.CurrentCultureIgnoreCase)
+                .ThenBy(b => b.Title, StringComparer.CurrentCultureIgnoreCase)
+                .ToList();
 
-                result.AppendLine();
-            }
-
-            MessageBox.Show(result.ToString(), "Группировка по жанрам");
+            DisplayBooks(sorted);
         }
 
-        private void btnFind_Click(object sender, EventArgs e)
-        {
-            var author = textBoxSearchAuthor.Text;
-            if (string.IsNullOrWhiteSpace(author))
-            {
-                MessageBox.Show("Укажите автора.");
-                return;
-            }
-
-            var books = _service.FindBooksByAuthor(author);
-            ShowBooksDialog(books, "Поиск по автору");
-        }
-
-        private void btnFindTitle_Click(object sender, EventArgs e)
-        {
-            var title = textBoxSearchTitle.Text;
-            if (string.IsNullOrWhiteSpace(title))
-            {
-                MessageBox.Show("Укажите часть названия.");
-                return;
-            }
-
-            var books = _service.FindBooksByTitle(title);
-            ShowBooksDialog(books, "Поиск по названию");
-        }
-
-        private void btnFindTitle_Click_1(object sender, EventArgs e)
-        {
-            btnFindTitle_Click(sender, e);
-        }
-
-        private void Form1_Activated(object? sender, EventArgs e)
+        private void btnRefresh_Click(object sender, EventArgs e)
         {
             LoadBooks();
+            ClearFields();
+        }
+
+        private void btnEditGenres_Click(object sender, EventArgs e)
+        {
+            var available = _service.GetAllGenres();
+            using var dialog = new GenreDialog(_currentGenres, available);
+            _suppressSelectionChange = true;
+            try
+            {
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    _currentGenres = dialog.Genres
+                        .Select(name => name.Trim())
+                        .Where(name => !string.IsNullOrWhiteSpace(name))
+                        .Distinct(StringComparer.CurrentCultureIgnoreCase)
+                        .ToList();
+                    UpdateGenresDisplay();
+                }
+            }
+            finally
+            {
+                _suppressSelectionChange = false;
+            }
+        }
+
+        private void dataGridViewBooks_SelectionChanged(object sender, EventArgs e)
+        {
+            if (_suppressSelectionChange)
+            {
+                return;
+            }
+
+            if (dataGridViewBooks.CurrentRow?.DataBoundItem is Book book)
+            {
+                PopulateFormFields(book);
+            }
+        }
+
+        private void PopulateFormFields(Book book)
+        {
+            textBoxId.Text = book.ID.ToString();
+            textBoxTitle.Text = book.Title;
+            textBoxAuthor.Text = book.Author;
+            textBoxYear.Text = book.Year.ToString();
+            _currentGenres = book.Genres
+                .Select(g => g.Name)
+                .Where(name => !string.IsNullOrWhiteSpace(name))
+                .Select(name => name.Trim())
+                .Distinct(StringComparer.CurrentCultureIgnoreCase)
+                .ToList();
+            UpdateGenresDisplay();
+        }
+
+        private void textBoxSearchAuthor_TextChanged(object sender, EventArgs e)
+        {
+            if (_suppressAuthorSuggestionUpdates)
+            {
+                return;
+            }
+
+            UpdateAuthorSuggestions(textBoxSearchAuthor.Text);
+            ApplyCombinedFilters();
+        }
+
+        private void listBoxAuthorSuggestions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxAuthorSuggestions.SelectedItem is not string author)
+            {
+                return;
+            }
+
+            _suppressAuthorSuggestionUpdates = true;
+            textBoxSearchAuthor.Text = author;
+            textBoxSearchAuthor.SelectionStart = author.Length;
+            _suppressAuthorSuggestionUpdates = false;
+
+            HideAuthorSuggestions();
+            ApplyCombinedFilters();
+        }
+
+        private void textBoxSearchTitle_TextChanged(object sender, EventArgs e)
+        {
+            if (_suppressTitleSuggestionUpdates)
+            {
+                return;
+            }
+
+            UpdateTitleSuggestions(textBoxSearchTitle.Text);
+            ApplyCombinedFilters();
+        }
+
+        private void listBoxTitleSuggestions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxTitleSuggestions.SelectedItem is not string title)
+            {
+                return;
+            }
+
+            _suppressTitleSuggestionUpdates = true;
+            textBoxSearchTitle.Text = title;
+            textBoxSearchTitle.SelectionStart = title.Length;
+            _suppressTitleSuggestionUpdates = false;
+
+            HideTitleSuggestions();
+            ApplyCombinedFilters();
+        }
+
+        private IEnumerable<Book> FilterBooksByAuthor(string? authorFragment, IEnumerable<Book>? source = null)
+        {
+            source ??= _allBooks;
+            if (string.IsNullOrWhiteSpace(authorFragment))
+            {
+                return source;
+            }
+
+            var needle = authorFragment.Trim();
+            return source.Where(b =>
+                !string.IsNullOrWhiteSpace(b.Author) &&
+                b.Author.Contains(needle, StringComparison.CurrentCultureIgnoreCase));
+        }
+
+        private IEnumerable<Book> FilterBooksByTitle(string? titleFragment, IEnumerable<Book>? source = null)
+        {
+            source ??= _allBooks;
+            if (string.IsNullOrWhiteSpace(titleFragment))
+            {
+                return source;
+            }
+
+            var needle = titleFragment.Trim();
+            return source.Where(b =>
+                !string.IsNullOrWhiteSpace(b.Title) &&
+                b.Title.Contains(needle, StringComparison.CurrentCultureIgnoreCase));
+        }
+
+        private void ApplyCombinedFilters()
+        {
+            var books = FilterBooksByAuthor(textBoxSearchAuthor.Text);
+            books = FilterBooksByTitle(textBoxSearchTitle.Text, books);
+            DisplayBooks(books.ToList());
         }
 
         private void ClearFields()
@@ -229,53 +363,119 @@ namespace WinFormsApp
             textBoxTitle.Clear();
             textBoxAuthor.Clear();
             textBoxYear.Clear();
-            comboBoxGenre.SelectedIndex = -1;
+            _currentGenres.Clear();
+            UpdateGenresDisplay();
             textBoxSearchAuthor.Clear();
             textBoxSearchTitle.Clear();
+            HideAuthorSuggestions();
+            HideTitleSuggestions();
+            dataGridViewBooks.ClearSelection();
+        }
+
+        private void UpdateGenresDisplay()
+        {
+            labelGenresValue.Text = _currentGenres.Any()
+                ? string.Join(", ", _currentGenres)
+                : "Жанры не выбраны";
         }
 
         private int? ReadSelectedBookId()
         {
-            if (listBoxBooks.SelectedItem is Book book)
+            if (dataGridViewBooks.CurrentRow?.DataBoundItem is Book book)
             {
                 return book.ID;
             }
 
-            if (listBoxBooks.SelectedItem is string text)
+            if (int.TryParse(textBoxId.Text, out var id))
             {
-                var parts = text.Split(',');
-                if (parts.Length > 0)
-                {
-                    var idPart = parts[0].Split(':').LastOrDefault();
-                    if (int.TryParse(idPart?.Trim(), out var parsed))
-                    {
-                        return parsed;
-                    }
-                }
+                return id;
             }
 
             return null;
         }
 
-        private void ShowBooksDialog(IEnumerable<Book> books, string caption)
+        private void UpdateAuthorSuggestions(string? query)
         {
-            var list = books.ToList();
-            if (!list.Any())
+            var normalized = query?.Trim() ?? string.Empty;
+
+            IEnumerable<string> authors = _allBooks
+                .Select(b => b.Author)
+                .Where(name => !string.IsNullOrWhiteSpace(name));
+
+            if (!string.IsNullOrEmpty(normalized))
             {
-                MessageBox.Show("Книги не найдены.");
+                authors = authors.Where(name =>
+                    name.Contains(normalized, StringComparison.CurrentCultureIgnoreCase));
+            }
+
+            var suggestions = authors
+                .Distinct(StringComparer.CurrentCultureIgnoreCase)
+                .OrderBy(name => name, StringComparer.CurrentCultureIgnoreCase)
+                .ToList();
+
+            if (!suggestions.Any())
+            {
+                HideAuthorSuggestions();
                 return;
             }
 
-            var result = string.Join(Environment.NewLine, list.Select(b => b.ToString()));
-            MessageBox.Show(result, caption);
+            listBoxAuthorSuggestions.BeginUpdate();
+            listBoxAuthorSuggestions.Items.Clear();
+            listBoxAuthorSuggestions.Items.AddRange(suggestions.Cast<object>().ToArray());
+            listBoxAuthorSuggestions.EndUpdate();
+            listBoxAuthorSuggestions.Visible = true;
         }
 
-        private void listBoxBooks_SelectedIndexChanged(object sender, EventArgs e)
+        private void HideAuthorSuggestions()
         {
+            listBoxAuthorSuggestions.Visible = false;
+            listBoxAuthorSuggestions.Items.Clear();
         }
 
-        private void textBoxSearchTitle_TextChanged(object sender, EventArgs e)
+        private void UpdateTitleSuggestions(string? query)
         {
+            var normalized = query?.Trim() ?? string.Empty;
+
+            IEnumerable<string> titles = _allBooks
+                .Select(b => b.Title)
+                .Where(name => !string.IsNullOrWhiteSpace(name));
+
+            if (!string.IsNullOrEmpty(normalized))
+            {
+                titles = titles.Where(name =>
+                    name.Contains(normalized, StringComparison.CurrentCultureIgnoreCase));
+            }
+
+            var suggestions = titles
+                .Distinct(StringComparer.CurrentCultureIgnoreCase)
+                .OrderBy(name => name, StringComparer.CurrentCultureIgnoreCase)
+                .ToList();
+
+            if (!suggestions.Any())
+            {
+                HideTitleSuggestions();
+                return;
+            }
+
+            listBoxTitleSuggestions.BeginUpdate();
+            listBoxTitleSuggestions.Items.Clear();
+            listBoxTitleSuggestions.Items.AddRange(suggestions.Cast<object>().ToArray());
+            listBoxTitleSuggestions.EndUpdate();
+            listBoxTitleSuggestions.Visible = true;
+        }
+
+        private void HideTitleSuggestions()
+        {
+            listBoxTitleSuggestions.Visible = false;
+            listBoxTitleSuggestions.Items.Clear();
+        }
+
+        private static string GetPrimaryGenre(Book book)
+        {
+            return book.Genres
+                .Select(g => g.Name)
+                .FirstOrDefault(name => !string.IsNullOrWhiteSpace(name))
+                ?? "Без жанра";
         }
     }
 }

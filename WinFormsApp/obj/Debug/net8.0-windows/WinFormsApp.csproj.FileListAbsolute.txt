@@ -169,3 +169,5 @@ C:\Users\Vladimir\Desktop\BookManagementSystem-master\WinFormsApp\obj\Debug\net8
 C:\Users\Vladimir\Desktop\BookManagementSystem-master\WinFormsApp\obj\Debug\net8.0-windows\WinFormsApp.pdb
 C:\Users\Vladimir\Desktop\BookManagementSystem-master\WinFormsApp\obj\Debug\net8.0-windows\WinFormsApp.genruntimeconfig.cache
 C:\Users\Vladimir\Desktop\BookManagementSystem-master\WinFormsApp\obj\Debug\net8.0-windows\ref\WinFormsApp.dll
+C:\Users\Vladimir\Desktop\BookManagementSystem-master\WinFormsApp\obj\Debug\net8.0-windows\WinFormsApp.sourcelink.json
+C:\Users\Vladimir\Desktop\BookManagementSystem-master\WinFormsApp\obj\Debug\net8.0-windows\WinFormsApp.GenreDialog.resources

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using BookManagementSystem.DataAccessLayer.Contexts;
@@ -18,6 +19,7 @@ public class EfBookRepository : IBookRepository
 
     public Book Add(Book entity)
     {
+        entity.Genres = ResolveGenres(entity.Genres.Select(g => g.Name));
         _context.Books.Add(entity);
         _context.SaveChanges();
         return entity;
@@ -43,10 +45,15 @@ public class EfBookRepository : IBookRepository
             return Enumerable.Empty<Book>();
         }
 
-        var normalized = author.Trim();
+        var needle = author.Trim();
+        var comparison = StringComparison.CurrentCultureIgnoreCase;
+
         return _context.Books
             .AsNoTracking()
-            .Where(b => b.Author.ToLower() == normalized.ToLower())
+            .Include(b => b.Genres)
+            .ToList()
+            .Where(b => !string.IsNullOrWhiteSpace(b.Author) &&
+                        b.Author.Contains(needle, comparison))
             .OrderBy(b => b.Title)
             .ToList();
     }
@@ -58,10 +65,15 @@ public class EfBookRepository : IBookRepository
             return Enumerable.Empty<Book>();
         }
 
-        var pattern = $"%{title.Trim()}%";
+        var needle = title.Trim();
+        var comparison = StringComparison.CurrentCultureIgnoreCase;
+
         return _context.Books
             .AsNoTracking()
-            .Where(b => EF.Functions.Like(b.Title, pattern))
+            .Include(b => b.Genres)
+            .ToList()
+            .Where(b => !string.IsNullOrWhiteSpace(b.Title) &&
+                        b.Title.Contains(needle, comparison))
             .OrderBy(b => b.Title)
             .ToList();
     }
@@ -70,6 +82,7 @@ public class EfBookRepository : IBookRepository
     {
         return _context.Books
             .AsNoTracking()
+            .Include(b => b.Genres)
             .OrderBy(b => b.ID)
             .ToList();
     }
@@ -78,6 +91,7 @@ public class EfBookRepository : IBookRepository
     {
         return _context.Books
             .AsNoTracking()
+            .Include(b => b.Genres)
             .FirstOrDefault(b => b.ID == id);
     }
 
@@ -92,9 +106,69 @@ public class EfBookRepository : IBookRepository
         existing.Title = entity.Title;
         existing.Author = entity.Author;
         existing.Year = entity.Year;
-        existing.Genre = entity.Genre;
+        UpdateGenres(existing, entity);
 
         _context.SaveChanges();
         return true;
+    }
+
+    private void UpdateGenres(Book target, Book source)
+    {
+        _context.Entry(target).Collection(b => b.Genres).Load();
+        target.Genres.Clear();
+        var genres = ResolveGenres(source.Genres.Select(g => g.Name));
+        foreach (var genre in genres)
+        {
+            target.Genres.Add(genre);
+        }
+    }
+
+    private List<Genre> ResolveGenres(IEnumerable<string> genres)
+    {
+        var normalized = genres
+            .Where(name => !string.IsNullOrWhiteSpace(name))
+            .Select(name => name.Trim())
+            .Distinct(StringComparer.CurrentCultureIgnoreCase)
+            .ToList();
+
+        if (!normalized.Any())
+        {
+            return new List<Genre>();
+        }
+
+        var allGenres = _context.Genres.ToList();
+        var result = new List<Genre>();
+
+        foreach (var name in normalized)
+        {
+            var genre = allGenres
+                .FirstOrDefault(g => string.Equals(g.Name, name, StringComparison.CurrentCultureIgnoreCase));
+
+            if (genre is null)
+            {
+                genre = new Genre { Name = name };
+                allGenres.Add(genre);
+                _context.Genres.Add(genre);
+            }
+
+            result.Add(genre);
+        }
+
+        return result;
+    }
+
+    public IReadOnlyCollection<string> GetAllGenres()
+    {
+        var names = _context.Genres
+            .AsNoTracking()
+            .Select(g => g.Name)
+            .ToList();
+
+        return names
+            .Where(name => !string.IsNullOrWhiteSpace(name))
+            .Select(name => name.Trim())
+            .Distinct(StringComparer.CurrentCultureIgnoreCase)
+            .OrderBy(name => name, StringComparer.CurrentCultureIgnoreCase)
+            .ToList();
     }
 }

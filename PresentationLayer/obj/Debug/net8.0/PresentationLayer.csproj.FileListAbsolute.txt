@@ -120,3 +120,4 @@ C:\Users\Vladimir\Desktop\BookManagementSystem-master\PresentationLayer\obj\Debu
 C:\Users\Vladimir\Desktop\BookManagementSystem-master\PresentationLayer\obj\Debug\net8.0\PresentationLayer.pdb
 C:\Users\Vladimir\Desktop\BookManagementSystem-master\PresentationLayer\obj\Debug\net8.0\PresentationLayer.genruntimeconfig.cache
 C:\Users\Vladimir\Desktop\BookManagementSystem-master\PresentationLayer\obj\Debug\net8.0\ref\PresentationLayer.dll
+C:\Users\Vladimir\Desktop\BookManagementSystem-master\PresentationLayer\obj\Debug\net8.0\PresentationLayer.sourcelink.json

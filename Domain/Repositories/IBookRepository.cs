@@ -7,4 +7,5 @@ public interface IBookRepository : IRepository<Book>
 {
     IEnumerable<Book> FindByAuthor(string author);
     IEnumerable<Book> FindByTitle(string title);
+    IReadOnlyCollection<string> GetAllGenres();
 }

@@ -7,10 +7,10 @@ public static class SqliteConnectionProvider
 {
     public static string GetDefaultConnectionString()
     {
-        var appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-        var storageFolder = Path.Combine(appData, "BookManagementSystem");
+        var baseDirectory = AppContext.BaseDirectory;
+        var storageFolder = Path.Combine(baseDirectory, "Data");
         Directory.CreateDirectory(storageFolder);
-        var databasePath = Path.Combine(storageFolder, "books.db");
+        var databasePath = Path.Combine(storageFolder, "books_v3.db");
         return $"Data Source={databasePath}";
     }
 }
