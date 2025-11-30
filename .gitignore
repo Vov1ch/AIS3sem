@@ -1,0 +1,9 @@
+# Visual Studio cache
+.vs/
+*.user
+*.suo
+*.vsidx
+**/bin/
+**/obj/
+*.exe
+*.dll
