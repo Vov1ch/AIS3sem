@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\WinFormsApp\\WinFormsApp.csproj": {}
+    "E:\\AIS3sem-mvc-danya\\WinFormsApp\\WinFormsApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
+    "E:\\AIS3sem-mvc-danya\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
+        "projectUniqueName": "E:\\AIS3sem-mvc-danya\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
         "projectName": "BusinessLogicLayer",
-        "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
-        "packagesPath": "C:\\Users\\Vladimir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\BusinessLogicLayer\\obj\\",
+        "projectPath": "E:\\AIS3sem-mvc-danya\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
+        "packagesPath": "C:\\Users\\danil\\.nuget\\packages\\",
+        "outputPath": "E:\\AIS3sem-mvc-danya\\BusinessLogicLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Vladimir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\danil\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,17 +26,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\DataAccessLayer\\DataAccessLayer.csproj": {
-                "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\DataAccessLayer\\DataAccessLayer.csproj"
+              "E:\\AIS3sem-mvc-danya\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "E:\\AIS3sem-mvc-danya\\DataAccessLayer\\DataAccessLayer.csproj"
               },
-              "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj"
+              "E:\\AIS3sem-mvc-danya\\Domain\\Domain.csproj": {
+                "projectPath": "E:\\AIS3sem-mvc-danya\\Domain\\Domain.csproj"
               }
             }
           }
@@ -51,7 +52,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -73,29 +74,43 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\DataAccessLayer\\DataAccessLayer.csproj": {
+    "E:\\AIS3sem-mvc-danya\\DataAccessLayer\\DataAccessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectUniqueName": "E:\\AIS3sem-mvc-danya\\DataAccessLayer\\DataAccessLayer.csproj",
         "projectName": "DataAccessLayer",
-        "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\DataAccessLayer\\DataAccessLayer.csproj",
-        "packagesPath": "C:\\Users\\Vladimir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\DataAccessLayer\\obj\\",
+        "projectPath": "E:\\AIS3sem-mvc-danya\\DataAccessLayer\\DataAccessLayer.csproj",
+        "packagesPath": "C:\\Users\\danil\\.nuget\\packages\\",
+        "outputPath": "E:\\AIS3sem-mvc-danya\\DataAccessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Vladimir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\danil\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -104,14 +119,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj"
+              "E:\\AIS3sem-mvc-danya\\Domain\\Domain.csproj": {
+                "projectPath": "E:\\AIS3sem-mvc-danya\\Domain\\Domain.csproj"
               }
             }
           }
@@ -126,7 +142,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -160,29 +176,43 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj": {
+    "E:\\AIS3sem-mvc-danya\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj",
+        "projectUniqueName": "E:\\AIS3sem-mvc-danya\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\Vladimir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\obj\\",
+        "projectPath": "E:\\AIS3sem-mvc-danya\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\danil\\.nuget\\packages\\",
+        "outputPath": "E:\\AIS3sem-mvc-danya\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Vladimir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\danil\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -191,6 +221,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -209,7 +240,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -225,29 +256,43 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\PresentationLayer\\PresentationLayer.csproj": {
+    "E:\\AIS3sem-mvc-danya\\PresentationLayer\\PresentationLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\PresentationLayer\\PresentationLayer.csproj",
+        "projectUniqueName": "E:\\AIS3sem-mvc-danya\\PresentationLayer\\PresentationLayer.csproj",
         "projectName": "PresentationLayer",
-        "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\PresentationLayer\\PresentationLayer.csproj",
-        "packagesPath": "C:\\Users\\Vladimir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\PresentationLayer\\obj\\",
+        "projectPath": "E:\\AIS3sem-mvc-danya\\PresentationLayer\\PresentationLayer.csproj",
+        "packagesPath": "C:\\Users\\danil\\.nuget\\packages\\",
+        "outputPath": "E:\\AIS3sem-mvc-danya\\PresentationLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Vladimir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\danil\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -256,17 +301,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
-                "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\BusinessLogicLayer\\BusinessLogicLayer.csproj"
+              "E:\\AIS3sem-mvc-danya\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
+                "projectPath": "E:\\AIS3sem-mvc-danya\\BusinessLogicLayer\\BusinessLogicLayer.csproj"
               },
-              "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Shared\\Shared.csproj": {
-                "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Shared\\Shared.csproj"
+              "E:\\AIS3sem-mvc-danya\\Shared\\Shared.csproj": {
+                "projectPath": "E:\\AIS3sem-mvc-danya\\Shared\\Shared.csproj"
               }
             }
           }
@@ -281,7 +327,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -297,29 +343,43 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Shared\\Shared.csproj": {
+    "E:\\AIS3sem-mvc-danya\\Shared\\Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Shared\\Shared.csproj",
+        "projectUniqueName": "E:\\AIS3sem-mvc-danya\\Shared\\Shared.csproj",
         "projectName": "Shared",
-        "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Shared\\Shared.csproj",
-        "packagesPath": "C:\\Users\\Vladimir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Shared\\obj\\",
+        "projectPath": "E:\\AIS3sem-mvc-danya\\Shared\\Shared.csproj",
+        "packagesPath": "C:\\Users\\danil\\.nuget\\packages\\",
+        "outputPath": "E:\\AIS3sem-mvc-danya\\Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Vladimir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\danil\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -328,14 +388,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj"
+              "E:\\AIS3sem-mvc-danya\\Domain\\Domain.csproj": {
+                "projectPath": "E:\\AIS3sem-mvc-danya\\Domain\\Domain.csproj"
               }
             }
           }
@@ -350,7 +411,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -366,29 +427,43 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\WinFormsApp\\WinFormsApp.csproj": {
+    "E:\\AIS3sem-mvc-danya\\WinFormsApp\\WinFormsApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\WinFormsApp\\WinFormsApp.csproj",
+        "projectUniqueName": "E:\\AIS3sem-mvc-danya\\WinFormsApp\\WinFormsApp.csproj",
         "projectName": "WinFormsApp",
-        "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\WinFormsApp\\WinFormsApp.csproj",
-        "packagesPath": "C:\\Users\\Vladimir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\WinFormsApp\\obj\\",
+        "projectPath": "E:\\AIS3sem-mvc-danya\\WinFormsApp\\WinFormsApp.csproj",
+        "packagesPath": "C:\\Users\\danil\\.nuget\\packages\\",
+        "outputPath": "E:\\AIS3sem-mvc-danya\\WinFormsApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Vladimir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\danil\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -397,20 +472,21 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
-                "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\BusinessLogicLayer\\BusinessLogicLayer.csproj"
+              "E:\\AIS3sem-mvc-danya\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
+                "projectPath": "E:\\AIS3sem-mvc-danya\\BusinessLogicLayer\\BusinessLogicLayer.csproj"
               },
-              "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\PresentationLayer\\PresentationLayer.csproj": {
-                "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\PresentationLayer\\PresentationLayer.csproj"
+              "E:\\AIS3sem-mvc-danya\\PresentationLayer\\PresentationLayer.csproj": {
+                "projectPath": "E:\\AIS3sem-mvc-danya\\PresentationLayer\\PresentationLayer.csproj"
               },
-              "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Shared\\Shared.csproj": {
-                "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Shared\\Shared.csproj"
+              "E:\\AIS3sem-mvc-danya\\Shared\\Shared.csproj": {
+                "projectPath": "E:\\AIS3sem-mvc-danya\\Shared\\Shared.csproj"
               }
             }
           }
@@ -425,7 +501,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -447,6 +523,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -455,7 +549,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

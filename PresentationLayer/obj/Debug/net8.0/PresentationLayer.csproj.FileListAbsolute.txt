@@ -205,3 +205,25 @@ C:\Users\Vladimir\Desktop\3 семестр\Ais-main\PresentationLayer\obj\Debug\
 C:\Users\Vladimir\Desktop\3 семестр\Ais-main\PresentationLayer\obj\Debug\net8.0\refint\PresentationLayer.dll
 C:\Users\Vladimir\Desktop\3 семестр\Ais-main\PresentationLayer\obj\Debug\net8.0\PresentationLayer.pdb
 C:\Users\Vladimir\Desktop\3 семестр\Ais-main\PresentationLayer\obj\Debug\net8.0\ref\PresentationLayer.dll
+E:\AIS3sem-mvc-danya\PresentationLayer\bin\Debug\net8.0\PresentationLayer.deps.json
+E:\AIS3sem-mvc-danya\PresentationLayer\bin\Debug\net8.0\PresentationLayer.dll
+E:\AIS3sem-mvc-danya\PresentationLayer\bin\Debug\net8.0\PresentationLayer.pdb
+E:\AIS3sem-mvc-danya\PresentationLayer\bin\Debug\net8.0\BusinessLogicLayer.dll
+E:\AIS3sem-mvc-danya\PresentationLayer\bin\Debug\net8.0\DataAccessLayer.dll
+E:\AIS3sem-mvc-danya\PresentationLayer\bin\Debug\net8.0\Domain.dll
+E:\AIS3sem-mvc-danya\PresentationLayer\bin\Debug\net8.0\Shared.dll
+E:\AIS3sem-mvc-danya\PresentationLayer\bin\Debug\net8.0\BusinessLogicLayer.pdb
+E:\AIS3sem-mvc-danya\PresentationLayer\bin\Debug\net8.0\Shared.pdb
+E:\AIS3sem-mvc-danya\PresentationLayer\bin\Debug\net8.0\DataAccessLayer.pdb
+E:\AIS3sem-mvc-danya\PresentationLayer\bin\Debug\net8.0\Domain.pdb
+E:\AIS3sem-mvc-danya\PresentationLayer\obj\Debug\net8.0\PresentationLayer.csproj.AssemblyReference.cache
+E:\AIS3sem-mvc-danya\PresentationLayer\obj\Debug\net8.0\PresentationLayer.GeneratedMSBuildEditorConfig.editorconfig
+E:\AIS3sem-mvc-danya\PresentationLayer\obj\Debug\net8.0\PresentationLayer.AssemblyInfoInputs.cache
+E:\AIS3sem-mvc-danya\PresentationLayer\obj\Debug\net8.0\PresentationLayer.AssemblyInfo.cs
+E:\AIS3sem-mvc-danya\PresentationLayer\obj\Debug\net8.0\PresentationLayer.csproj.CoreCompileInputs.cache
+E:\AIS3sem-mvc-danya\PresentationLayer\obj\Debug\net8.0\PresentationLayer.sourcelink.json
+E:\AIS3sem-mvc-danya\PresentationLayer\obj\Debug\net8.0\Presenta.9C561136.Up2Date
+E:\AIS3sem-mvc-danya\PresentationLayer\obj\Debug\net8.0\PresentationLayer.dll
+E:\AIS3sem-mvc-danya\PresentationLayer\obj\Debug\net8.0\refint\PresentationLayer.dll
+E:\AIS3sem-mvc-danya\PresentationLayer\obj\Debug\net8.0\PresentationLayer.pdb
+E:\AIS3sem-mvc-danya\PresentationLayer\obj\Debug\net8.0\ref\PresentationLayer.dll

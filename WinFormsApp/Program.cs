@@ -29,7 +29,8 @@ namespace WinFormsApp
             var bookService = ninjectKernel.Get<IBookService>();
 
             var form = new Form1();
-            var presenter = new BookPresenter(form, bookService);
+            var controller = new BookController(bookService, form);
+            form.SetController(controller);
 
             Application.Run(form);
         }

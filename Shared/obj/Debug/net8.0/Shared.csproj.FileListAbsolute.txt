@@ -13,3 +13,19 @@ C:\Users\Vladimir\Desktop\3 семестр\Ais-main\Shared\obj\Debug\net8.0\Shar
 C:\Users\Vladimir\Desktop\3 семестр\Ais-main\Shared\obj\Debug\net8.0\refint\Shared.dll
 C:\Users\Vladimir\Desktop\3 семестр\Ais-main\Shared\obj\Debug\net8.0\Shared.pdb
 C:\Users\Vladimir\Desktop\3 семестр\Ais-main\Shared\obj\Debug\net8.0\ref\Shared.dll
+E:\AIS3sem-mvc-danya\Shared\bin\Debug\net8.0\Shared.deps.json
+E:\AIS3sem-mvc-danya\Shared\bin\Debug\net8.0\Shared.dll
+E:\AIS3sem-mvc-danya\Shared\bin\Debug\net8.0\Shared.pdb
+E:\AIS3sem-mvc-danya\Shared\bin\Debug\net8.0\Domain.dll
+E:\AIS3sem-mvc-danya\Shared\bin\Debug\net8.0\Domain.pdb
+E:\AIS3sem-mvc-danya\Shared\obj\Debug\net8.0\Shared.csproj.AssemblyReference.cache
+E:\AIS3sem-mvc-danya\Shared\obj\Debug\net8.0\Shared.GeneratedMSBuildEditorConfig.editorconfig
+E:\AIS3sem-mvc-danya\Shared\obj\Debug\net8.0\Shared.AssemblyInfoInputs.cache
+E:\AIS3sem-mvc-danya\Shared\obj\Debug\net8.0\Shared.AssemblyInfo.cs
+E:\AIS3sem-mvc-danya\Shared\obj\Debug\net8.0\Shared.csproj.CoreCompileInputs.cache
+E:\AIS3sem-mvc-danya\Shared\obj\Debug\net8.0\Shared.sourcelink.json
+E:\AIS3sem-mvc-danya\Shared\obj\Debug\net8.0\Shared.csproj.Up2Date
+E:\AIS3sem-mvc-danya\Shared\obj\Debug\net8.0\Shared.dll
+E:\AIS3sem-mvc-danya\Shared\obj\Debug\net8.0\refint\Shared.dll
+E:\AIS3sem-mvc-danya\Shared\obj\Debug\net8.0\Shared.pdb
+E:\AIS3sem-mvc-danya\Shared\obj\Debug\net8.0\ref\Shared.dll

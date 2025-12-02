@@ -1,4 +1,5 @@
 using BookManagementSystem.Domain.Entities;
+using BookManagementSystem.PresentationLayer;
 using BookManagementSystem.Shared;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace WinFormsApp
     /// </summary>
     public partial class Form1 : Form, IBookView
     {
+        private BookController _controller = null!;
         private readonly List<string> _currentGenres = new();
         private readonly OutsideClickMessageFilter _outsideClickFilter;
         private readonly ComboBox? _genreFilterComboBox;
@@ -22,18 +24,6 @@ namespace WinFormsApp
         private bool _suppressGenreFilterUpdates;
 
         private const string AllGenresOption = "Все жанры";
-
-        public event EventHandler? ViewLoaded;
-        public event EventHandler? AddBookRequested;
-        public event EventHandler? UpdateBookRequested;
-        public event EventHandler? DeleteBookRequested;
-        public event EventHandler? RefreshRequested;
-        public event EventHandler? GroupRequested;
-        public event EventHandler? EditGenresRequested;
-        public event EventHandler? AuthorFilterChanged;
-        public event EventHandler? TitleFilterChanged;
-        public event EventHandler? GenreFilterChanged;
-        public event EventHandler<BookSelectionChangedEventArgs>? BookSelectionChanged;
 
         public Form1()
         {
@@ -45,10 +35,15 @@ namespace WinFormsApp
             UpdateGenresDisplay();
         }
 
+        public void SetController(BookController controller)
+        {
+            _controller = controller;
+        }
+
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            ViewLoaded?.Invoke(this, EventArgs.Empty);
+            _controller?.Initialize();
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
@@ -418,22 +413,22 @@ namespace WinFormsApp
         }
 
         private void btnAdd_Click(object sender, EventArgs e) =>
-            AddBookRequested?.Invoke(this, EventArgs.Empty);
+            _controller.OnAdd();
 
         private void btnDelete_Click(object sender, EventArgs e) =>
-            DeleteBookRequested?.Invoke(this, EventArgs.Empty);
+            _controller.OnDelete();
 
         private void btnSave_Click(object sender, EventArgs e) =>
-            UpdateBookRequested?.Invoke(this, EventArgs.Empty);
+            _controller.OnUpdate();
 
         private void btnGroup_Click(object sender, EventArgs e) =>
-            GroupRequested?.Invoke(this, EventArgs.Empty);
+            _controller.OnGroup();
 
         private void btnRefresh_Click(object sender, EventArgs e) =>
-            RefreshRequested?.Invoke(this, EventArgs.Empty);
+            _controller.OnRefresh();
 
         private void btnEditGenres_Click(object sender, EventArgs e) =>
-            EditGenresRequested?.Invoke(this, EventArgs.Empty);
+            _controller.OnEditGenres();
 
         private void comboBoxGenreFilter_SelectedIndexChanged(object? sender, EventArgs e)
         {
@@ -442,7 +437,7 @@ namespace WinFormsApp
                 return;
             }
 
-            GenreFilterChanged?.Invoke(this, EventArgs.Empty);
+            _controller.OnFiltersChanged();
         }
 
         private void dataGridViewBooks_SelectionChanged(object sender, EventArgs e)
@@ -453,7 +448,7 @@ namespace WinFormsApp
             }
 
             var book = dataGridViewBooks.CurrentRow?.DataBoundItem as Book;
-            BookSelectionChanged?.Invoke(this, new BookSelectionChangedEventArgs(book));
+            _controller.OnBookSelected(book);
         }
 
         private void textBoxSearchAuthor_TextChanged(object sender, EventArgs e)
@@ -463,7 +458,7 @@ namespace WinFormsApp
                 return;
             }
 
-            AuthorFilterChanged?.Invoke(this, EventArgs.Empty);
+            _controller.OnFiltersChanged();
         }
 
         private void listBoxAuthorSuggestions_SelectedIndexChanged(object sender, EventArgs e)
@@ -478,7 +473,7 @@ namespace WinFormsApp
             textBoxSearchAuthor.SelectionStart = author.Length;
             _suppressFilterEvents = false;
             HideAuthorSuggestions();
-            AuthorFilterChanged?.Invoke(this, EventArgs.Empty);
+            _controller.OnFiltersChanged();
         }
 
         private void textBoxSearchTitle_TextChanged(object sender, EventArgs e)
@@ -488,7 +483,7 @@ namespace WinFormsApp
                 return;
             }
 
-            TitleFilterChanged?.Invoke(this, EventArgs.Empty);
+            _controller.OnFiltersChanged();
         }
 
         private void listBoxTitleSuggestions_SelectedIndexChanged(object sender, EventArgs e)
@@ -503,7 +498,7 @@ namespace WinFormsApp
             textBoxSearchTitle.SelectionStart = title.Length;
             _suppressFilterEvents = false;
             HideTitleSuggestions();
-            TitleFilterChanged?.Invoke(this, EventArgs.Empty);
+            _controller.OnFiltersChanged();
         }
     }
 }

@@ -55,3 +55,15 @@ C:\Users\Vladimir\Desktop\3 семестр\Ais-main\Domain\obj\Debug\net8.0\Doma
 C:\Users\Vladimir\Desktop\3 семестр\Ais-main\Domain\obj\Debug\net8.0\refint\Domain.dll
 C:\Users\Vladimir\Desktop\3 семестр\Ais-main\Domain\obj\Debug\net8.0\Domain.pdb
 C:\Users\Vladimir\Desktop\3 семестр\Ais-main\Domain\obj\Debug\net8.0\ref\Domain.dll
+E:\AIS3sem-mvc-danya\Domain\bin\Debug\net8.0\Domain.deps.json
+E:\AIS3sem-mvc-danya\Domain\bin\Debug\net8.0\Domain.dll
+E:\AIS3sem-mvc-danya\Domain\bin\Debug\net8.0\Domain.pdb
+E:\AIS3sem-mvc-danya\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\AIS3sem-mvc-danya\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+E:\AIS3sem-mvc-danya\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+E:\AIS3sem-mvc-danya\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+E:\AIS3sem-mvc-danya\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+E:\AIS3sem-mvc-danya\Domain\obj\Debug\net8.0\Domain.dll
+E:\AIS3sem-mvc-danya\Domain\obj\Debug\net8.0\refint\Domain.dll
+E:\AIS3sem-mvc-danya\Domain\obj\Debug\net8.0\Domain.pdb
+E:\AIS3sem-mvc-danya\Domain\obj\Debug\net8.0\ref\Domain.dll
