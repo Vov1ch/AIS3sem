@@ -8,30 +8,11 @@ public record BookInput(string Title, string Author, int Year, IReadOnlyCollecti
 
 public record BookFilters(string? AuthorFragment, string? TitleFragment, string? Genre);
 
-public class BookSelectionChangedEventArgs : EventArgs
-{
-    public BookSelectionChangedEventArgs(Book? book)
-    {
-        Book = book;
-    }
 
-    public Book? Book { get; }
-}
+
 
 public interface IBookView
 {
-    event EventHandler? ViewLoaded;
-    event EventHandler? AddBookRequested;
-    event EventHandler? UpdateBookRequested;
-    event EventHandler? DeleteBookRequested;
-    event EventHandler? RefreshRequested;
-    event EventHandler? GroupRequested;
-    event EventHandler? EditGenresRequested;
-    event EventHandler? AuthorFilterChanged;
-    event EventHandler? TitleFilterChanged;
-    event EventHandler? GenreFilterChanged;
-    event EventHandler<BookSelectionChangedEventArgs>? BookSelectionChanged;
-
     bool TryGetBookInput(out BookInput input);
     bool TryGetSelectedBookId(out int id);
     BookFilters GetFilters();

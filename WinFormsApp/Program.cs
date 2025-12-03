@@ -1,4 +1,4 @@
-using BookManagementSystem.BusinessLogicLayer;
+﻿using BookManagementSystem.BusinessLogicLayer;
 using BookManagementSystem.BusinessLogicLayer.Services;
 using BookManagementSystem.PresentationLayer;
 using Ninject;
@@ -30,7 +30,8 @@ namespace WinFormsApp
 
             var form = new Form1();
             var controller = new BookController(bookService, form);
-            controller.Initialize();
+            form.SetController(controller);
+
             Application.Run(form);
         }
     }
