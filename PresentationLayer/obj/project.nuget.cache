@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UiDt82S5fqc=",
+  "dgSpecHash": "AW6L3TuHgVk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\PresentationLayer\\PresentationLayer.csproj",
+  "projectFilePath": "C:\\Users\\Vladimir\\Desktop\\5аис\\PresentationLayer\\PresentationLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Vladimir\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
     "C:\\Users\\Vladimir\\.nuget\\packages\\microsoft.data.sqlite\\8.0.8\\microsoft.data.sqlite.8.0.8.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Shared\\Shared.csproj": {}
+    "C:\\Users\\Vladimir\\Desktop\\5аис\\Shared\\Shared.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj": {
+    "C:\\Users\\Vladimir\\Desktop\\5аис\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Vladimir\\Desktop\\5аис\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\Vladimir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -69,14 +69,14 @@
         }
       }
     },
-    "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Shared\\Shared.csproj": {
+    "C:\\Users\\Vladimir\\Desktop\\5аис\\Shared\\Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Shared\\Shared.csproj",
+        "projectUniqueName": "C:\\Users\\Vladimir\\Desktop\\5аис\\Shared\\Shared.csproj",
         "projectName": "Shared",
-        "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Shared\\Shared.csproj",
+        "projectPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\Shared\\Shared.csproj",
         "packagesPath": "C:\\Users\\Vladimir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Shared\\obj\\",
+        "outputPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -97,8 +97,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj"
+              "C:\\Users\\Vladimir\\Desktop\\5аис\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\Domain\\Domain.csproj"
               }
             }
           }

@@ -55,3 +55,15 @@ C:\Users\Vladimir\Desktop\3 семестр\Ais-main\Domain\obj\Debug\net8.0\Doma
 C:\Users\Vladimir\Desktop\3 семестр\Ais-main\Domain\obj\Debug\net8.0\refint\Domain.dll
 C:\Users\Vladimir\Desktop\3 семестр\Ais-main\Domain\obj\Debug\net8.0\Domain.pdb
 C:\Users\Vladimir\Desktop\3 семестр\Ais-main\Domain\obj\Debug\net8.0\ref\Domain.dll
+C:\Users\Vladimir\Desktop\5аис\Domain\bin\Debug\net8.0\Domain.deps.json
+C:\Users\Vladimir\Desktop\5аис\Domain\bin\Debug\net8.0\Domain.dll
+C:\Users\Vladimir\Desktop\5аис\Domain\bin\Debug\net8.0\Domain.pdb
+C:\Users\Vladimir\Desktop\5аис\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Vladimir\Desktop\5аис\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+C:\Users\Vladimir\Desktop\5аис\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+C:\Users\Vladimir\Desktop\5аис\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\Vladimir\Desktop\5аис\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+C:\Users\Vladimir\Desktop\5аис\Domain\obj\Debug\net8.0\Domain.dll
+C:\Users\Vladimir\Desktop\5аис\Domain\obj\Debug\net8.0\refint\Domain.dll
+C:\Users\Vladimir\Desktop\5аис\Domain\obj\Debug\net8.0\Domain.pdb
+C:\Users\Vladimir\Desktop\5аис\Domain\obj\Debug\net8.0\ref\Domain.dll

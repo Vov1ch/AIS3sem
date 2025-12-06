@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\WinFormsApp\\WinFormsApp.csproj": {}
+    "C:\\Users\\Vladimir\\Desktop\\5аис\\WinFormsApp\\WinFormsApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
+    "C:\\Users\\Vladimir\\Desktop\\5аис\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
+        "projectUniqueName": "C:\\Users\\Vladimir\\Desktop\\5аис\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
         "projectName": "BusinessLogicLayer",
-        "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
+        "projectPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
         "packagesPath": "C:\\Users\\Vladimir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\BusinessLogicLayer\\obj\\",
+        "outputPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\BusinessLogicLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,11 +32,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\DataAccessLayer\\DataAccessLayer.csproj": {
-                "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\DataAccessLayer\\DataAccessLayer.csproj"
+              "C:\\Users\\Vladimir\\Desktop\\5аис\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\DataAccessLayer\\DataAccessLayer.csproj"
               },
-              "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj"
+              "C:\\Users\\Vladimir\\Desktop\\5аис\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\Domain\\Domain.csproj"
               }
             }
           }
@@ -82,14 +82,14 @@
         }
       }
     },
-    "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\DataAccessLayer\\DataAccessLayer.csproj": {
+    "C:\\Users\\Vladimir\\Desktop\\5аис\\DataAccessLayer\\DataAccessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectUniqueName": "C:\\Users\\Vladimir\\Desktop\\5аис\\DataAccessLayer\\DataAccessLayer.csproj",
         "projectName": "DataAccessLayer",
-        "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\DataAccessLayer\\DataAccessLayer.csproj",
         "packagesPath": "C:\\Users\\Vladimir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\DataAccessLayer\\obj\\",
+        "outputPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\DataAccessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -110,8 +110,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj"
+              "C:\\Users\\Vladimir\\Desktop\\5аис\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\Domain\\Domain.csproj"
               }
             }
           }
@@ -169,14 +169,14 @@
         }
       }
     },
-    "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj": {
+    "C:\\Users\\Vladimir\\Desktop\\5аис\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Vladimir\\Desktop\\5аис\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\Vladimir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -234,14 +234,14 @@
         }
       }
     },
-    "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\PresentationLayer\\PresentationLayer.csproj": {
+    "C:\\Users\\Vladimir\\Desktop\\5аис\\PresentationLayer\\PresentationLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\PresentationLayer\\PresentationLayer.csproj",
+        "projectUniqueName": "C:\\Users\\Vladimir\\Desktop\\5аис\\PresentationLayer\\PresentationLayer.csproj",
         "projectName": "PresentationLayer",
-        "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\PresentationLayer\\PresentationLayer.csproj",
+        "projectPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\PresentationLayer\\PresentationLayer.csproj",
         "packagesPath": "C:\\Users\\Vladimir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\PresentationLayer\\obj\\",
+        "outputPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\PresentationLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -262,11 +262,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
-                "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\BusinessLogicLayer\\BusinessLogicLayer.csproj"
+              "C:\\Users\\Vladimir\\Desktop\\5аис\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
+                "projectPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\BusinessLogicLayer\\BusinessLogicLayer.csproj"
               },
-              "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Shared\\Shared.csproj": {
-                "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Shared\\Shared.csproj"
+              "C:\\Users\\Vladimir\\Desktop\\5аис\\Shared\\Shared.csproj": {
+                "projectPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\Shared\\Shared.csproj"
               }
             }
           }
@@ -306,14 +306,14 @@
         }
       }
     },
-    "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Shared\\Shared.csproj": {
+    "C:\\Users\\Vladimir\\Desktop\\5аис\\Shared\\Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Shared\\Shared.csproj",
+        "projectUniqueName": "C:\\Users\\Vladimir\\Desktop\\5аис\\Shared\\Shared.csproj",
         "projectName": "Shared",
-        "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Shared\\Shared.csproj",
+        "projectPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\Shared\\Shared.csproj",
         "packagesPath": "C:\\Users\\Vladimir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Shared\\obj\\",
+        "outputPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -334,8 +334,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Domain\\Domain.csproj"
+              "C:\\Users\\Vladimir\\Desktop\\5аис\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\Domain\\Domain.csproj"
               }
             }
           }
@@ -375,14 +375,14 @@
         }
       }
     },
-    "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\WinFormsApp\\WinFormsApp.csproj": {
+    "C:\\Users\\Vladimir\\Desktop\\5аис\\WinFormsApp\\WinFormsApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\WinFormsApp\\WinFormsApp.csproj",
+        "projectUniqueName": "C:\\Users\\Vladimir\\Desktop\\5аис\\WinFormsApp\\WinFormsApp.csproj",
         "projectName": "WinFormsApp",
-        "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\WinFormsApp\\WinFormsApp.csproj",
+        "projectPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\WinFormsApp\\WinFormsApp.csproj",
         "packagesPath": "C:\\Users\\Vladimir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\WinFormsApp\\obj\\",
+        "outputPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\WinFormsApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -403,14 +403,14 @@
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
-                "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\BusinessLogicLayer\\BusinessLogicLayer.csproj"
+              "C:\\Users\\Vladimir\\Desktop\\5аис\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
+                "projectPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\BusinessLogicLayer\\BusinessLogicLayer.csproj"
               },
-              "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\PresentationLayer\\PresentationLayer.csproj": {
-                "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\PresentationLayer\\PresentationLayer.csproj"
+              "C:\\Users\\Vladimir\\Desktop\\5аис\\PresentationLayer\\PresentationLayer.csproj": {
+                "projectPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\PresentationLayer\\PresentationLayer.csproj"
               },
-              "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Shared\\Shared.csproj": {
-                "projectPath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\Shared\\Shared.csproj"
+              "C:\\Users\\Vladimir\\Desktop\\5аис\\Shared\\Shared.csproj": {
+                "projectPath": "C:\\Users\\Vladimir\\Desktop\\5аис\\Shared\\Shared.csproj"
               }
             }
           }

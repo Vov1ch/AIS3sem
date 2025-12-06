@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2vqq6DwAFIA=",
+  "dgSpecHash": "xIb/YNYMhdM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Vladimir\\Desktop\\3 семестр\\AIS4_main_mvp\\WinFormsApp\\WinFormsApp.csproj",
+  "projectFilePath": "C:\\Users\\Vladimir\\Desktop\\5аис\\WinFormsApp\\WinFormsApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Vladimir\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
     "C:\\Users\\Vladimir\\.nuget\\packages\\microsoft.data.sqlite\\8.0.8\\microsoft.data.sqlite.8.0.8.nupkg.sha512",

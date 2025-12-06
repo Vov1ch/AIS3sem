@@ -205,3 +205,25 @@ C:\Users\Vladimir\Desktop\3 семестр\Ais-main\PresentationLayer\obj\Debug\
 C:\Users\Vladimir\Desktop\3 семестр\Ais-main\PresentationLayer\obj\Debug\net8.0\refint\PresentationLayer.dll
 C:\Users\Vladimir\Desktop\3 семестр\Ais-main\PresentationLayer\obj\Debug\net8.0\PresentationLayer.pdb
 C:\Users\Vladimir\Desktop\3 семестр\Ais-main\PresentationLayer\obj\Debug\net8.0\ref\PresentationLayer.dll
+C:\Users\Vladimir\Desktop\5аис\PresentationLayer\bin\Debug\net8.0\PresentationLayer.deps.json
+C:\Users\Vladimir\Desktop\5аис\PresentationLayer\bin\Debug\net8.0\PresentationLayer.dll
+C:\Users\Vladimir\Desktop\5аис\PresentationLayer\bin\Debug\net8.0\PresentationLayer.pdb
+C:\Users\Vladimir\Desktop\5аис\PresentationLayer\bin\Debug\net8.0\BusinessLogicLayer.dll
+C:\Users\Vladimir\Desktop\5аис\PresentationLayer\bin\Debug\net8.0\DataAccessLayer.dll
+C:\Users\Vladimir\Desktop\5аис\PresentationLayer\bin\Debug\net8.0\Domain.dll
+C:\Users\Vladimir\Desktop\5аис\PresentationLayer\bin\Debug\net8.0\Shared.dll
+C:\Users\Vladimir\Desktop\5аис\PresentationLayer\bin\Debug\net8.0\BusinessLogicLayer.pdb
+C:\Users\Vladimir\Desktop\5аис\PresentationLayer\bin\Debug\net8.0\Shared.pdb
+C:\Users\Vladimir\Desktop\5аис\PresentationLayer\bin\Debug\net8.0\DataAccessLayer.pdb
+C:\Users\Vladimir\Desktop\5аис\PresentationLayer\bin\Debug\net8.0\Domain.pdb
+C:\Users\Vladimir\Desktop\5аис\PresentationLayer\obj\Debug\net8.0\PresentationLayer.csproj.AssemblyReference.cache
+C:\Users\Vladimir\Desktop\5аис\PresentationLayer\obj\Debug\net8.0\PresentationLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Vladimir\Desktop\5аис\PresentationLayer\obj\Debug\net8.0\PresentationLayer.AssemblyInfoInputs.cache
+C:\Users\Vladimir\Desktop\5аис\PresentationLayer\obj\Debug\net8.0\PresentationLayer.AssemblyInfo.cs
+C:\Users\Vladimir\Desktop\5аис\PresentationLayer\obj\Debug\net8.0\PresentationLayer.csproj.CoreCompileInputs.cache
+C:\Users\Vladimir\Desktop\5аис\PresentationLayer\obj\Debug\net8.0\PresentationLayer.sourcelink.json
+C:\Users\Vladimir\Desktop\5аис\PresentationLayer\obj\Debug\net8.0\Presenta.9C561136.Up2Date
+C:\Users\Vladimir\Desktop\5аис\PresentationLayer\obj\Debug\net8.0\PresentationLayer.dll
+C:\Users\Vladimir\Desktop\5аис\PresentationLayer\obj\Debug\net8.0\refint\PresentationLayer.dll
+C:\Users\Vladimir\Desktop\5аис\PresentationLayer\obj\Debug\net8.0\PresentationLayer.pdb
+C:\Users\Vladimir\Desktop\5аис\PresentationLayer\obj\Debug\net8.0\ref\PresentationLayer.dll
