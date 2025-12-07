@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BookManagementSystem.Domain.Abstractions;
 using BookManagementSystem.Domain.Entities;
-using BookManagementSystem.Domain.Repositories;
 
 namespace BookManagementSystem.BusinessLogicLayer.Services;
 
@@ -12,15 +12,15 @@ namespace BookManagementSystem.BusinessLogicLayer.Services;
 /// </summary>
 public class BookService : IBookService
 {
-    private readonly IBookRepository _repository;
+    private readonly IUnitOfWork _unitOfWork;
 
     /// <summary>
     /// Инициализирует новый экземпляр сервиса книг.
     /// </summary>
     /// <param name="repository">Репозиторий книг.</param>
-    public BookService(IBookRepository repository)
+    public BookService(IUnitOfWork unitOfWork)
     {
-        _repository = repository;
+        _unitOfWork = unitOfWork;
     }
 
     /// <summary>
@@ -29,7 +29,7 @@ public class BookService : IBookService
     /// <returns>Коллекция всех книг, отсортированная по ID.</returns>
     public IReadOnlyCollection<Book> GetAllBooks()
     {
-        return _repository
+        return _unitOfWork.Books
             .GetAll()
             .OrderBy(b => b.ID)
             .ToList();
@@ -46,7 +46,9 @@ public class BookService : IBookService
     public Book CreateBook(string title, string author, int year, IEnumerable<string> genres)
     {
         var book = new Book(title, author, year, genres);
-        return _repository.Add(book);
+        var created = _unitOfWork.Books.Add(book);
+        _unitOfWork.Commit();
+        return created;
     }
 
     /// <summary>
@@ -56,7 +58,13 @@ public class BookService : IBookService
     /// <returns>True, если удаление прошло успешно.</returns>
     public bool DeleteBook(int id)
     {
-        return _repository.Delete(id);
+        var deleted = _unitOfWork.Books.Delete(id);
+        if (deleted)
+        {
+            _unitOfWork.Commit();
+        }
+
+        return deleted;
     }
 
     /// <summary>
@@ -66,7 +74,7 @@ public class BookService : IBookService
     /// <returns>Книга или null, если не найдена.</returns>
     public Book? GetBookById(int id)
     {
-        return _repository.GetById(id);
+        return _unitOfWork.Books.GetById(id);
     }
 
     /// <summary>
@@ -81,7 +89,13 @@ public class BookService : IBookService
     public bool UpdateBook(int id, string title, string author, int year, IEnumerable<string> genres)
     {
         var book = new Book(title, author, year, genres) { ID = id };
-        return _repository.Update(book);
+        var updated = _unitOfWork.Books.Update(book);
+        if (updated)
+        {
+            _unitOfWork.Commit();
+        }
+
+        return updated;
     }
 
     /// <summary>
@@ -96,7 +110,7 @@ public class BookService : IBookService
             return GetAllBooks();
         }
 
-        return _repository
+        return _unitOfWork.Books
             .FindByAuthor(author)
             .ToList();
     }
@@ -110,8 +124,8 @@ public class BookService : IBookService
     {
         var comparer = StringComparer.CurrentCultureIgnoreCase;
         IEnumerable<string> authors = string.IsNullOrWhiteSpace(authorFragment)
-            ? _repository.GetAll().Select(b => b.Author)
-            : _repository.FindByAuthor(authorFragment).Select(b => b.Author);
+            ? _unitOfWork.Books.GetAll().Select(b => b.Author)
+            : _unitOfWork.Books.FindByAuthor(authorFragment).Select(b => b.Author);
 
         return authors
             .Where(name => !string.IsNullOrWhiteSpace(name))
@@ -127,8 +141,8 @@ public class BookService : IBookService
     {
         var comparer = StringComparer.CurrentCultureIgnoreCase;
         IEnumerable<string> titles = string.IsNullOrWhiteSpace(titleFragment)
-            ? _repository.GetAll().Select(b => b.Title)
-            : _repository.FindByTitle(titleFragment).Select(b => b.Title);
+            ? _unitOfWork.Books.GetAll().Select(b => b.Title)
+            : _unitOfWork.Books.FindByTitle(titleFragment).Select(b => b.Title);
 
         return titles
             .Where(name => !string.IsNullOrWhiteSpace(name))
@@ -149,7 +163,7 @@ public class BookService : IBookService
             return GetAllBooks();
         }
 
-        return _repository
+        return _unitOfWork.Books
             .FindByTitle(title)
             .ToList();
     }
@@ -160,7 +174,7 @@ public class BookService : IBookService
     /// <returns>Коллекция названий жанров, отсортированная по алфавиту.</returns>
     public IReadOnlyCollection<string> GetAllGenres()
     {
-        return _repository
+        return _unitOfWork.Books
             .GetAllGenres()
             .OrderBy(g => g, StringComparer.CurrentCultureIgnoreCase)
             .ToList();
@@ -174,7 +188,7 @@ public class BookService : IBookService
     /// <returns>Словарь, где ключ - название жанра, а значение - список книг.</returns>
     public IReadOnlyDictionary<string, IReadOnlyCollection<Book>> GroupBooksByGenre()
     {
-        var books = _repository.GetAll();
+        var books = _unitOfWork.Books.GetAll();
 
         var items = books.SelectMany(book =>
             book.Genres.Any()

@@ -1,5 +1,44 @@
-# Visual Studio cache
+﻿# Visual Studio / IDE
 .vs/
 *.user
 *.suo
 *.vsidx
+*.vscode/
+*.idea/
+*.DotSettings*
+*.sln.iml
+
+# Build results
+[Bb]in/
+[Oo]bj/
+
+# .NET
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# NuGet
+*.nupkg
+*.snupkg
+*.nuspec
+*.nuget.props
+*.nuget.targets
+packages/
+
+# Logs
+*.log
+
+# User-specific
+*.userprefs
+
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.swp
+*.swo
+
+# Others
+*.tmp
+*.bak

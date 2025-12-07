@@ -31,7 +31,7 @@ public class EfBookRepository : IBookRepository
         // Разрешаем дубликаты жанров перед добавлением
         entity.Genres = ResolveGenres(entity.Genres.Select(g => g.Name));
         _context.Books.Add(entity);
-        _context.SaveChanges();
+
         return entity;
     }
 
@@ -49,7 +49,7 @@ public class EfBookRepository : IBookRepository
         }
 
         _context.Books.Remove(book);
-        _context.SaveChanges();
+
         return true;
     }
 
@@ -147,7 +147,6 @@ public class EfBookRepository : IBookRepository
         existing.Year = entity.Year;
         UpdateGenres(existing, entity);
 
-        _context.SaveChanges();
         return true;
     }
 
