@@ -37,15 +37,24 @@ public class BookService : IBookService
 
     /// <summary>
     /// Создает новую книгу.
+    /// Использует доменные правила для валидации.
     /// </summary>
     /// <param name="title">Название книги.</param>
     /// <param name="author">Автор книги.</param>
     /// <param name="year">Год издания.</param>
     /// <param name="genres">Список жанров.</param>
     /// <returns>Созданная книга.</returns>
+    /// <exception cref="InvalidOperationException">Если нарушены доменные правила.</exception>
     public Book CreateBook(string title, string author, int year, IEnumerable<string> genres)
     {
         var book = new Book(title, author, year, genres);
+        
+        // Доменное правило: книга должна иметь хотя бы один жанр
+        if (!book.HasGenres())
+        {
+            throw new InvalidOperationException("Книга должна иметь хотя бы один жанр");
+        }
+        
         var created = _unitOfWork.Books.Add(book);
         _unitOfWork.Commit();
         return created;

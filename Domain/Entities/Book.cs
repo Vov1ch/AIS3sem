@@ -32,12 +32,28 @@ public class Book : IDomainObject
     public List<Genre> Genres { get; set; } = new();
 
     /// <summary>
+    /// Признак того, что книга выдана читателю.
+    /// </summary>
+    public bool IsBorrowed { get; private set; }
+
+    /// <summary>
+    /// Идентификатор читателя, у которого сейчас книга.
+    /// Null, если книга доступна.
+    /// </summary>
+    public int? CurrentBorrowerId { get; private set; }
+
+    /// <summary>
     /// Строковое представление списка жанров для отображения.
     /// Возвращает список названий жанров через запятую или "Без жанра", если список пуст.
     /// </summary>
     public string GenresDisplay => Genres.Any()
         ? string.Join(", ", Genres.Select(g => g.Name))
         : "Без жанра";
+
+    /// <summary>
+    /// Статус доступности книги для отображения.
+    /// </summary>
+    public string StatusDisplay => IsBorrowed ? "Выдана" : "Доступна";
 
     /// <summary>
     /// Конструктор по умолчанию.
@@ -64,12 +80,69 @@ public class Book : IDomainObject
             .ToList();
     }
 
+    #region Бизнес-правила
+
+    /// <summary>
+    /// Проверяет, может ли книга быть выдана.
+    /// Бизнес-правило: книга не может быть выдана, если она уже на руках.
+    /// </summary>
+    /// <returns>True, если книга доступна для выдачи.</returns>
+    public bool CanBeBorrowed()
+    {
+        return !IsBorrowed;
+    }
+
+    /// <summary>
+    /// Выдаёт книгу читателю.
+    /// </summary>
+    /// <param name="borrowerId">Идентификатор читателя.</param>
+    /// <returns>Результат операции.</returns>
+    public DomainResult Borrow(int borrowerId)
+    {
+        if (!CanBeBorrowed())
+        {
+            return DomainResult.Fail("Книга уже выдана другому читателю");
+        }
+
+        IsBorrowed = true;
+        CurrentBorrowerId = borrowerId;
+        return DomainResult.Success();
+    }
+
+    /// <summary>
+    /// Возвращает книгу в библиотеку.
+    /// </summary>
+    /// <returns>Результат операции.</returns>
+    public DomainResult Return()
+    {
+        if (!IsBorrowed)
+        {
+            return DomainResult.Fail("Книга не была выдана");
+        }
+
+        IsBorrowed = false;
+        CurrentBorrowerId = null;
+        return DomainResult.Success();
+    }
+
+    /// <summary>
+    /// Проверяет, имеет ли книга хотя бы один жанр.
+    /// Бизнес-правило: книга должна иметь минимум один жанр.
+    /// </summary>
+    /// <returns>True, если у книги есть жанры.</returns>
+    public bool HasGenres()
+    {
+        return Genres.Any(g => !string.IsNullOrWhiteSpace(g.Name));
+    }
+
+    #endregion
+
     /// <summary>
     /// Возвращает строковое представление объекта книги.
     /// </summary>
     /// <returns>Строка с информацией о книге.</returns>
     public override string ToString()
     {
-        return $"ID: {ID}, Название: {Title}, Автор: {Author}, Год: {Year}, Жанры: {GenresDisplay}";
+        return $"ID: {ID}, Название: {Title}, Автор: {Author}, Год: {Year}, Жанры: {GenresDisplay}, Статус: {StatusDisplay}";
     }
 }

@@ -32,6 +32,7 @@ namespace BookManagementSystem.BusinessLogicLayer
             var connectionString = SqliteConnectionProvider.GetDefaultConnectionString();
 
             Bind<IBookService>().To<BookService>().InSingletonScope();
+            Bind<ILibraryDomainService>().To<LibraryDomainService>().InSingletonScope();
 
             if (_useDapper)
             {
